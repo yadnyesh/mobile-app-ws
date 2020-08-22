@@ -1,5 +1,6 @@
 package io.yadnyesh.controller;
 
+import io.yadnyesh.controller.dto.UserRest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +15,8 @@ public class UserController {
     }
 
     @GetMapping(path = "/{userId}")
-    public String getUserById(@PathVariable String userId) {
-        return "Get userId " + userId +" was called";
+    public UserRest getUserById(@PathVariable String userId) {
+        return new UserRest("Yadnyesh", "Juvekar", "YB","yad@gmail.com");
     }
 
     @PostMapping
