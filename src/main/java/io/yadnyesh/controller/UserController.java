@@ -11,6 +11,11 @@ public class UserController {
         return "Get user was called";
     }
 
+    @GetMapping(path = "/{userId}")
+    public String getUserById(@PathVariable String userId) {
+        return "Get userId " + userId +" was called";
+    }
+
     @PostMapping
     public String createUser() {
         return "Create user was called";
