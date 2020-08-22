@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @GetMapping
-    public String getUser(@RequestParam(value = "page") int page, @RequestParam(value = "limit") int limit) {
-        return "Get user was called with " + page + " pages and " + limit + " records per page";
+    public String getUser(@RequestParam(value = "page", defaultValue = "1") int page,
+                          @RequestParam(value = "limit", defaultValue = "50") int limit,
+                          @RequestParam(value = "sort", defaultValue = "asc", required = false) String sort) {
+        return "Get user was called with " + page + " pages and " + limit + " records per page and sorting " + sort ;
     }
 
     @GetMapping(path = "/{userId}")
