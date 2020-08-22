@@ -1,6 +1,7 @@
 package io.yadnyesh.controller;
 
 import io.yadnyesh.controller.dto.UserRest;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,7 @@ public class UserController {
         return "Get user was called with " + page + " pages and " + limit + " records per page and sorting " + sort ;
     }
 
-    @GetMapping(path = "/{userId}")
+    @GetMapping(path = "/{userId}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public UserRest getUserById(@PathVariable String userId) {
         return new UserRest("Yadnyesh", "Juvekar", "YB","yad@gmail.com");
     }
