@@ -1,10 +1,10 @@
 package io.yadnyesh.controller.dto;
 
-public class UserRest {
+public class UserRequestModel {
     private String firstName;
     private String lastName;
-    private String userId;
     private String email;
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -22,14 +22,6 @@ public class UserRest {
         this.lastName = lastName;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -38,13 +30,11 @@ public class UserRest {
         this.email = email;
     }
 
-    public UserRest(String firstName, String lastName, String userId, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userId = userId;
-        this.email = email;
+    public String getPassword() {
+        return password;
     }
 
-    public UserRest() {
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

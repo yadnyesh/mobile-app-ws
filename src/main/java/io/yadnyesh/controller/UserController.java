@@ -1,5 +1,6 @@
 package io.yadnyesh.controller;
 
+import io.yadnyesh.controller.dto.UserRequestModel;
 import io.yadnyesh.controller.dto.UserRest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,9 +24,26 @@ public class UserController {
         return new ResponseEntity<>(userRest, HttpStatus.OK);
     }
 
-    @PostMapping
-    public String createUser() {
-        return "Create user was called";
+//    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+//                 produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+//    public ResponseEntity<UserRest> createUser(@RequestBody UserRequestModel userRequestModel) {
+//        UserRest returnUser = new UserRest();
+//        returnUser.setEmail("yad@gmail.com");
+//        returnUser.setFirstName("Yadnyesh");
+//        returnUser.setLastName("Juvekar");
+//        returnUser.setUserId("YB");
+//        return new ResponseEntity<>(returnUser, HttpStatus.CREATED);
+//    }
+
+    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+                 produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<UserRest> createUser(@RequestBody UserRequestModel userRequestModel) {
+        UserRest returnUser = new UserRest();
+        returnUser.setEmail("yad@gmail.com");
+        returnUser.setFirstName("Yadnyesh");
+        returnUser.setLastName("Juvekar");
+        returnUser.setUserId("YB");
+        return new ResponseEntity<>(returnUser, HttpStatus.OK);
     }
 
     @PutMapping
