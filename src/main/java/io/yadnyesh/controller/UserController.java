@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -23,25 +25,14 @@ public class UserController {
         UserRest userRest =  new UserRest("Yadnyesh", "Juvekar", "YB","yad@gmail.com");
         return new ResponseEntity<>(userRest, HttpStatus.OK);
     }
-
-//    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-//                 produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<UserRest> createUser(@RequestBody UserRequestModel userRequestModel) {
-//        UserRest returnUser = new UserRest();
-//        returnUser.setEmail("yad@gmail.com");
-//        returnUser.setFirstName("Yadnyesh");
-//        returnUser.setLastName("Juvekar");
-//        returnUser.setUserId("YB");
-//        return new ResponseEntity<>(returnUser, HttpStatus.CREATED);
-//    }
-
+    
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
                  produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<UserRest> createUser(@RequestBody UserRequestModel userRequestModel) {
+    public ResponseEntity<UserRest> createUser(@Valid @RequestBody UserRequestModel userRequestModel) {
         UserRest returnUser = new UserRest();
-        returnUser.setEmail("yad@gmail.com");
-        returnUser.setFirstName("Yadnyesh");
-        returnUser.setLastName("Juvekar");
+        returnUser.setEmail(userRequestModel.getEmail());
+        returnUser.setFirstName(userRequestModel.getFirstName());
+        returnUser.setLastName(userRequestModel.getLastName());
         returnUser.setUserId("YB");
         return new ResponseEntity<>(returnUser, HttpStatus.OK);
     }
