@@ -1,7 +1,9 @@
 package io.yadnyesh.controller;
 
 import io.yadnyesh.controller.dto.UserRest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,8 +18,9 @@ public class UserController {
     }
 
     @GetMapping(path = "/{userId}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public UserRest getUserById(@PathVariable String userId) {
-        return new UserRest("Yadnyesh", "Juvekar", "YB","yad@gmail.com");
+    public ResponseEntity<UserRest> getUserById(@PathVariable String userId) {
+        UserRest userRest =  new UserRest("Yadnyesh", "Juvekar", "YB","yad@gmail.com");
+        return new ResponseEntity<>(userRest, HttpStatus.OK);
     }
 
     @PostMapping
